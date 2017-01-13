@@ -1,0 +1,21 @@
+<launch>
+
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag0_ideal" args="0 0 3.175 0 0 0 /map /tag_0_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag1_ideal" args=".381 0 3.175 0 0 0 /map /tag_1_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag2_ideal" args=".762 0 3.175 0 0 0 /map /tag_2_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag3_ideal" args="1.143 0 3.175 0 0 0 /map /tag_3_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag4_ideal" args="0 .381 3.175 0 0 0 /map /tag_4_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag5_ideal" args=".381 .381 3.175 0 0 0 /map /tag_5_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag6_ideal" args=".762 .381 3.175 0 0 0 /map /tag_6_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag7_ideal" args="1.143 .381 3.175 0 0 0 /map /tag_7_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag8_ideal" args="0 .762 3.175 0 0 0 /map /tag_8_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag9_ideal" args=".381 .762 3.175 0 0 0 /map /tag_9_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag10_ideal" args=".762 .762 3.175 0 0 0 /map /tag_10_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag11_ideal" args="1.143 .762 3.175 0 0 0 /map /tag_11_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag12_ideal" args="0 1.143 3.175 0 0 0 /map /tag_12_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag13_ideal" args=".381 1.143 3.175 0 0 0 /map /tag_13_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag14_ideal" args=".762 1.143 3.175 0 0 0 /map /tag_14_ideal 5" />
+<node pkg="tf" type="static_transform_publisher" name="map_to_tag15_ideal" args="1.143 1.143 3.175 0 0 0 /map /tag_15_ideal 5" />
+
+</launch>
+

@@ -1,0 +1,8 @@
+<launch>
+<node pkg="tf" type="static_transform_publisher" name="map2cam1" args="0 0 1.15 0 1.5707 0 /map /usb_cam1base 5" />
+<node pkg="tf" type="static_transform_publisher" name="cam1base2cam1" args="0 0 0 -1.5707 0 0 /usb_cam1base /usb_cam1 5" />
+<node pkg="tf" type="static_transform_publisher" name="tag1tocam2base" args="-0.01 0 -0.03 0 3.1416 0 /tag_1 /usb_cam2base 5" />
+<node pkg="tf" type="static_transform_publisher" name="cam2basetocam2" args="0 0 0 1.5707 0 0 /usb_cam2base /usb_cam2 5" />
+<node pkg="tf" type="static_transform_publisher" name="cam2tocam2pose" args="0 0 0 0 -1.5707 0 /usb_cam2 /usb_cam2pose 5" />
+<node pkg="tf" type="static_transform_publisher" name="odom2baselink" args="0 0 0 0 0 0 /odom /cam1_to_tag_2 5" />
+</launch>

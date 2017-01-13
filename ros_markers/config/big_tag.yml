@@ -1,0 +1,12 @@
+%YAML:1.0
+
+ceiling_grid:
+    - tag: 113
+      size: 304.9
+      translation: [0, 0, 0]
+      keep: 0
+big_tag:
+    - tag: 114
+      size: 304.9
+      translation: [0, 0, 0]
+      keep: 0

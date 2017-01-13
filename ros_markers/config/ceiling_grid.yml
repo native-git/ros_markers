@@ -1,0 +1,53 @@
+%YAML:1.0
+
+ceiling_grid:
+    - tag: 0
+      size: 78.7
+      translation: [0, 0, 0]
+      keep: 0
+    - tag: 1
+      size: 30
+      translation: [381, 0, 0]
+      keep: 0
+    - tag: 2
+      size: 78.7
+      translation: [762, 0, 0]
+      keep: 0
+    - tag: 3
+      size: 78.7
+      translation: [1143, 0, 0]
+      keep: 0
+    - tag: 4
+      size: 78.7
+      translation: [0, -381, 0]
+      keep: 0
+    - tag: 5
+      size: 78.7
+      translation: [381, -381, 0]
+      keep: 0
+    - tag: 6
+      size: 78.7
+      translation: [762, -381, 0]
+      keep: 0
+    - tag: 7
+      size: 30
+      translation: [1143, -381, 0]
+      keep: 0
+    - tag: 8
+      size: 78.7
+      translation: [0, -762, 0]
+      keep: 0
+    - tag: 9
+      size: 78.7
+      translation: [381, -762, 0]
+      keep: 0
+    - tag: 10
+      size: 78.7
+      translation: [762, -762, 0]
+      keep: 0
+    - tag: 11
+      size: 78.7
+      translation: [1143, -762, 0]
+      keep: 0
+
+

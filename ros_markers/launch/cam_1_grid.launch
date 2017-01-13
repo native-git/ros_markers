@@ -1,0 +1,48 @@
+<launch>
+
+  <!-- Sets the image source. -->
+  <arg name="image_topic" default="/camera/image_raw" />
+  <remap from="image" to="$(arg image_topic)" />
+  
+  <!-- Defines which and where are the markers in the environment. The sample
+    file (markers_configuration_sample.yml) provides complete documentation.
+    -->
+  <arg name="markers_configuration" 
+    default="$(find ros_markers)/config/ceiling_config_sample.yml" />
+  
+  <!-- Sets whether or not to ignore markers not included in the 
+	configuration file.    -->
+  <arg name="omit_other_tags" default="false" />	
+	
+  <!-- Sets the default size of markers, in millimeters, which are not 
+    in the configuration file. -->
+  <arg name="default_marker_size" default="78.7" />
+    	
+  <!-- set the level of filtering applied on the detected markers. 1.0 means
+    no filtering, while 0.0 is the maximum level of filtering. 
+    (-1 uses chilitags default value). -->
+  <arg name="gain" default="-1" />
+
+  <!-- set the number of frames an object/marker should be not detected
+    for before it is removed. (-1 uses chilitags default value). -->
+  <arg name="persistence" default="-1" />
+  
+  <node pkg="ros_markers" type="detect" name="ros_markers">
+    <param name="markers_configuration" type="str" 
+      value="$(arg markers_configuration)" />
+    <param name="omit_other_tags" type="bool" value="$(arg omit_other_tags)" />
+    <param name="default_marker_size" type="double" value="$(arg default_marker_size)" />
+    <param name="gain" type="double" value="$(arg gain)" />
+    <param name="persistence" type="int" value="$(arg gain)" />
+  </node>
+
+  <!-- Following lines added by Mike to try and get things working with RosAria -->
+
+  <node pkg="tf" type="static_transform_publisher" name="ceiling_grid_to_map" args="0 0 -3.2846 0 0 0 /ceiling_grid /map 10" />
+  <node pkg="tf" type="static_transform_publisher" name="usb_cam1_to_base_link" args="0 0 0.81 3.142 0 0 /base_link /usb_cam1 10" />
+
+
+  <!-- node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 /map /odom 10" / -->
+  <!-- node pkg="tf" type="static_transform_publisher" name="base_link_to_odom" args="0 0 0 0 -1.5708 0 /base_link /odom 10" / -->
+
+</launch>

@@ -1,0 +1,15 @@
+digraph G {
+"odom" -> "base_link"[label="Broadcaster: /RosAria\nAverage rate: 10.179 Hz\nMost recent transform: 1475174929.895 ( 0.042 sec old)\nBuffer length: 4.912 sec\n"];
+"usb_cam1" -> "ceiling_grid"[label="Broadcaster: /ros_markers\nAverage rate: 15.215 Hz\nMost recent transform: 1475174929.915 ( 0.022 sec old)\nBuffer length: 4.929 sec\n"];
+"usb_cam1" -> "tag_12"[label="Broadcaster: /ros_markers\nAverage rate: 15.214 Hz\nMost recent transform: 1475174929.915 ( 0.021 sec old)\nBuffer length: 4.930 sec\n"];
+"usb_cam1" -> "tag_4"[label="Broadcaster: /ros_markers\nAverage rate: 15.212 Hz\nMost recent transform: 1475174929.916 ( 0.021 sec old)\nBuffer length: 4.930 sec\n"];
+"usb_cam1" -> "tag_8"[label="Broadcaster: /ros_markers\nAverage rate: 15.212 Hz\nMost recent transform: 1475174929.916 ( 0.021 sec old)\nBuffer length: 4.930 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1475174929.936"[ shape=plaintext ] ;
+ }->"odom";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1475174929.936"[ shape=plaintext ] ;
+ }->"usb_cam1";
+}
