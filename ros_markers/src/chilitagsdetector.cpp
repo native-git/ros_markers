@@ -1,10 +1,4 @@
 #include "chilitagsdetector.hpp"
-#include <ros/ros.h>
-#include <iostream>
-#include <typeinfo>
-#include <string>     // std::string, std::to_string
-#include <geometry_msgs/Vector3.h>
-#include <cmath>
 
 using namespace std;
 using namespace cv;
@@ -13,9 +7,6 @@ using namespace cv;
 // this allow to compensate for the 'slowness' of tag detection, but introduce
 // some lag in TF.
 #define TRANSFORM_FUTURE_DATING 0
-
-//Added by mike
-//int dist = 0;
 
 ChilitagsDetector::ChilitagsDetector(ros::NodeHandle& rosNode,
                                      const string& configFilename,
@@ -42,9 +33,7 @@ ChilitagsDetector::ChilitagsDetector(ros::NodeHandle& rosNode,
     sub = it.subscribeCamera("image", 1, &ChilitagsDetector::findMarkers, this);
 
     if(!configFilename.empty()) {
-	// Original includes omitOtherTags, commented by mike
     chilitags3d.readTagConfiguration(configFilename, omitOtherTags);
-	//chilitags3d.readTagConfiguration(configFilename);
     }
 
     if(tagSize!=USE_CHILITAGS_DEFAULT_PARAM)
@@ -58,15 +47,6 @@ void ChilitagsDetector::setROSTransform(Matx44d trans, tf::Transform& transform)
                                     trans(1,3)/1000,
                                     trans(2,3)/1000));
 
-/*
-ROS_INFO("Hello");
-    for (int i = 0; i < 3; i++){
-        for(int j = 0; j < 4; j++){
-            ROS_INFO("%f\t", trans(i,j)); 
-        }
-        ROS_INFO("\n");
-    }
-    */
     tf::Quaternion qrot;
     tf::Matrix3x3 mrot(
         trans(0,0), trans(0,1), trans(0,2),
@@ -117,40 +97,8 @@ void ChilitagsDetector::findMarkers(const sensor_msgs::ImageConstPtr& msg,
     auto previouslySeen(objectsSeen);
 #endif
     objectsSeen.clear();
+
     for (auto& kv : foundObjects) {
-        /*
-        float x = kv.second(0,3);
-        float y = kv.second(1,3);
-        float z = kv.second(2,3);
-        std::string name = kv.first;
-        name.erase(0,4);
-        double tag = stod(name);
-        //int dist = sqrt((pow(x,2) + pow(y,2) + pow(z,2)));
-        double dist = sqrt((pow(x,2) + pow(y,2) + pow(z,2)));
-        //std::string name = std::to_string(dist);
-        objectsSeen.insert(kv.first);
-        setROSTransform(kv.second, 
-                        transform);
-
-        br.sendTransform(
-                tf::StampedTransform(transform, 
-                                        ros::Time::now() + ros::Duration(TRANSFORM_FUTURE_DATING), 
-                                        cameramodel.tfFrame(),
-                                        kv.first));
-                                        */
-/*
-        br.sendTransform(
-                tf::StampedTransform(transform, 
-                                        ros::Time::now() + ros::Duration(TRANSFORM_FUTURE_DATING), 
-                                        "poopy_bunghole",
-                                        (kv.first + "_guess" + name)));
-                                        */
-        /*
-        //added by mike
-        msg1.x = tag;
-        msg1.y = dist;
-        gps_pub.publish(msg1);
-    */  
 
         objectsSeen.insert(kv.first);
         setROSTransform(kv.second, 
@@ -159,8 +107,7 @@ void ChilitagsDetector::findMarkers(const sensor_msgs::ImageConstPtr& msg,
                 tf::StampedTransform(transform, 
                                         ros::Time::now() + ros::Duration(TRANSFORM_FUTURE_DATING), 
                                         cameramodel.tfFrame(),
-                                        cameramodel.tfFrame() + "/" + kv.first));
-                                        
+                                        cameramodel.tfFrame() + "/" + kv.first));                                     
     }
 
 #ifdef WITH_KNOWLEDGE
@@ -185,11 +132,3 @@ void ChilitagsDetector::findMarkers(const sensor_msgs::ImageConstPtr& msg,
 
 
 }
-
-/*
-void ChilitagsDetector::getkv()
-{
-        cout << "hello I am getkv()";
-}
-*/
-

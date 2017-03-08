@@ -10,7 +10,6 @@
 // ROS
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>
-#include <geometry_msgs/Vector3.h>
 #include <image_transport/image_transport.h>
 #include <image_geometry/pinhole_camera_model.h>
 #include <cv_bridge/cv_bridge.h>
@@ -21,9 +20,6 @@
 #endif
 
 #define USE_CHILITAGS_DEFAULT_PARAM -1
-
-using namespace std;
-using namespace cv;
 
 class ChilitagsDetector
 {
@@ -55,9 +51,6 @@ public:
                       bool omitOtherTags = false,
                       double tagSize = USE_CHILITAGS_DEFAULT_PARAM);
 
-    //Added by Aneesh
-    //void getkv();
-
 private:
 
 #ifdef WITH_KNOWLEDGE
@@ -72,10 +65,6 @@ private:
     tf::TransformBroadcaster br;
     tf::Transform transform;
 
-    //added by mike
-    geometry_msgs::Vector3 msg1;
-    ros::Publisher gps_pub = rosNode.advertise<geometry_msgs::Vector3>("gps_data", 1);
-
     image_geometry::PinholeCameraModel cameramodel;
     cv::Mat cameraMatrix, distCoeffs;
     bool firstUncalibratedImage;
@@ -89,5 +78,4 @@ private:
     void findMarkers(const sensor_msgs::ImageConstPtr& msg,
                      const sensor_msgs::CameraInfoConstPtr& camerainfo);
 
-    
 };
